@@ -5,30 +5,32 @@ class CurrentConditions
 
   def initialize(zip_code)
     @zip_code = zip_code
+    @weather_info = get_data
   end
 
 
   def temp
-    weather_info = HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip_code}.json")
-    weather_info = weather_info["current_observation"]["temp_f"]
+     @weather_info["current_observation"]["temp_f"]
   end
 
 
   def display_location
-    weather_info = HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip_code}.json")
-    weather_info = weather_info["current_observation"]["observation_location"]["full"]
+    @weather_info["current_observation"]["observation_location"]["full"]
   end
 
 
   def display_wind
-    weather_info = HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip_code}.json")
-    weather_info = weather_info["current_observation"]["wind_string"]
+    @weather_info["current_observation"]["wind_string"]
   end
 
 
   def display_humidity
-    weather_info = HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip_code}.json")
-    weather_info = weather_info["current_observation"]["relative_humidity"]
+    @weather_info["current_observation"]["relative_humidity"]
+  end
+
+
+  private def get_data
+    HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip_code}.json")
   end
 
 

@@ -6,6 +6,7 @@ class TenDayForecast
 
   def initialize(zip_code)
     @zip_code = zip_code
+    @weather_info = get_info
   end
 
 
