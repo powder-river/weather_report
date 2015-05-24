@@ -1,9 +1,11 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'httparty'
+require 'faker'
 require './current_conditions.rb'
 require './sun_up_down.rb'
 require './ten_day_forecast.rb'
+require './alerts.rb'
 
 class ApplicationTest < Minitest::Test
 
@@ -49,7 +51,16 @@ class ApplicationTest < Minitest::Test
 
   # def test_10_day_forecast_day0
   #   day0 = TenDayForecast.new(82009)
-  #   assert_equal "string", day0.forecast(1)
+  #   assert_equal "Cloudy skies. High near 55F. Winds SSE at 15 to 25 mph.", day0.forecast
+  # end
+#>>>>>>>>>>>>WORKING>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  # def test_weather_alert
+  #   weather_alert = WeatherAlerts.new(73463)
+  #   assert_equal "message", weather_alert.alerts
+  # end
+
+  # def test_hurricane
+  #   hurricane = Hurricane.new(82009)
   # end
 
 
