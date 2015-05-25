@@ -20,4 +20,4 @@ puts "The current weather for #{current_conditions.display_location} is as follo
   The Sun will rise at #{sun_status.sunrise} and set at #{sun_status.sunset}\n\n
   The ten day forecast is as follows: #{ten_day.forecast}\n\n
   Weather Alerts in your area: #{weather_alert.alerts}\n\n
-  #{hurricane.hurricane_status}"
+  Active Hurricane Status: #{hurricane.hurricane_status}"

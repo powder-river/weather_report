@@ -1,16 +1,16 @@
 require 'httparty'
 class Hurricane
-
   attr_reader :zip_code
+
 
   def initialize(zip_code)
     @zip_code = zip_code
+    @weather_info = get_data
   end
 
-  def hurricane_status
-    weather_info = HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/currenthurricane/view.json")
-    hurricane_info = weather_info["currenthurricane"]
 
+  def hurricane_status
+    hurricane_info = @weather_info["currenthurricane"]
     if hurricane_info.length > 0
       hurricane_name = hurricane_info[0]["stormInfo"]["stormName_Nice"]
       hurricane_long = hurricane_info[0]["Current"]["long"]
@@ -21,4 +21,12 @@ class Hurricane
       message = "There are currently no active hurricanes being tracked."
     end
   end
+
+
+  private def get_data
+  HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/currenthurricane/view.json")
+  end
+
+
+  
 end

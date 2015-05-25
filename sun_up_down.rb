@@ -1,6 +1,6 @@
 require 'httparty'
-class SunUpDown
 
+class SunUpDown
   attr_reader :zip_code
 
   def initialize(zip_code)
@@ -21,6 +21,7 @@ class SunUpDown
     sun_minute = @weather_info["sun_phase"]["sunset"]["minute"]
     "#{sun_hour}:#{sun_minute}"
   end
+
 
   private def get_data
     HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/astronomy/q/#{zip_code}.json")
